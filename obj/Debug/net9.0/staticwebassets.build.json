@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "+6rXPT2I4d2EfkJdqqb/yc+/c7CFuRQFWGJxKok7XYk=",
+  "Source": "eshop-auth",
+  "BasePath": "_content/eshop-auth",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
