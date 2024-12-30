@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "/home/rutkrut/Рабочий стол/eshop-auth/eshop-auth.csproj": {}
+    "/Users/dimapecagin/Desktop/dotnet-Keycloack/eshop-auth.csproj": {}
   },
   "projects": {
-    "/home/rutkrut/Рабочий стол/eshop-auth/eshop-auth.csproj": {
+    "/Users/dimapecagin/Desktop/dotnet-Keycloack/eshop-auth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rutkrut/Рабочий стол/eshop-auth/eshop-auth.csproj",
+        "projectUniqueName": "/Users/dimapecagin/Desktop/dotnet-Keycloack/eshop-auth.csproj",
         "projectName": "eshop-auth",
-        "projectPath": "/home/rutkrut/Рабочий стол/eshop-auth/eshop-auth.csproj",
-        "packagesPath": "/home/rutkrut/.nuget/packages/",
-        "outputPath": "/home/rutkrut/Рабочий стол/eshop-auth/obj/",
+        "projectPath": "/Users/dimapecagin/Desktop/dotnet-Keycloack/eshop-auth.csproj",
+        "packagesPath": "/Users/dimapecagin/.nuget/packages/",
+        "outputPath": "/Users/dimapecagin/Desktop/dotnet-Keycloack/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/rutkrut/.nuget/NuGet/NuGet.Config"
+          "/Users/dimapecagin/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "/usr/lib64/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -57,9 +56,23 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[7.2.0, )"
             }
           },
           "imports": [
@@ -81,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

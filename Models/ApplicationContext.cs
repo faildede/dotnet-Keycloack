@@ -1,14 +1,20 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace eshop_auth.Models;
-
-public class ApplicationContext: DbContext
+namespace eshop_auth.Models
 {
-    public DbSet<ProductsModels> Products => Set<ProductsModels>();
-    public ApplicationContext() => Database.EnsureCreated();
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public class ApplicationContext : DbContext
     {
-        optionsBuilder.UseNpgsql(@"Host=localhost;Username=admin;Password=root;Database=db");
+        public DbSet<Product> Products { get; set; }
+
+          public ApplicationContext(DbContextOptions<ApplicationContext> options)
+            : base(options)
+        {
+            Database.EnsureCreated();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+           optionsBuilder.UseNpgsql(@"Host=localhost;Username=admin;Password=root;Database=db");    
+        }
     }
 }
