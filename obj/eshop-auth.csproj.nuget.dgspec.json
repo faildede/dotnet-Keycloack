@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dimapecagin/Desktop/dotnet-Keycloack/eshop-auth.csproj": {}
+    "/home/rutkrut/RiderProjects/dotnet-Keycloack/eshop-auth.csproj": {}
   },
   "projects": {
-    "/Users/dimapecagin/Desktop/dotnet-Keycloack/eshop-auth.csproj": {
+    "/home/rutkrut/RiderProjects/dotnet-Keycloack/eshop-auth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dimapecagin/Desktop/dotnet-Keycloack/eshop-auth.csproj",
+        "projectUniqueName": "/home/rutkrut/RiderProjects/dotnet-Keycloack/eshop-auth.csproj",
         "projectName": "eshop-auth",
-        "projectPath": "/Users/dimapecagin/Desktop/dotnet-Keycloack/eshop-auth.csproj",
-        "packagesPath": "/Users/dimapecagin/.nuget/packages/",
-        "outputPath": "/Users/dimapecagin/Desktop/dotnet-Keycloack/obj/",
+        "projectPath": "/home/rutkrut/RiderProjects/dotnet-Keycloack/eshop-auth.csproj",
+        "packagesPath": "/home/rutkrut/.nuget/packages/",
+        "outputPath": "/home/rutkrut/RiderProjects/dotnet-Keycloack/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/dimapecagin/.nuget/NuGet/NuGet.Config"
+          "/home/rutkrut/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "/usr/lib64/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,6 +45,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Aspire.Hosting.Keycloak": {
+              "target": "Package",
+              "version": "[9.0.0-preview.5.24551.3, )"
+            },
             "EntityFramework": {
               "target": "Package",
               "version": "[6.5.1, )"
@@ -94,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

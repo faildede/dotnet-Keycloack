@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using eshop_auth.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,17 +19,29 @@ namespace eshop_auth.Dal
 
         public Product GetProductById(int id)
         {
-            return _db.Products.Find(id);
+            var product = _db.Products.Find(id);
+            if (product == null){
+             return null;
+            }
+            return product;
         }
 
+        public Product GetProductByName(string title)
+        {
+            var product = _db.Products.FirstOrDefault(p => p.Title == title);
+            return product;
+        }
+        
         public void AddProduct(Product product)
         {
             _db.Products.Add(product);
+            _db.SaveChanges();
         }
 
         public void UpdateProduct(Product product)
         {
             _db.Entry(product).State = EntityState.Modified;
+            _db.SaveChanges();
         }
 
         public void DeleteProduct(int id)
@@ -41,6 +50,11 @@ namespace eshop_auth.Dal
             if (product != null)
             {
                 _db.Products.Remove(product);
+                _db.SaveChanges();
+            }
+            else
+            {
+                return ;
             }
         }
 

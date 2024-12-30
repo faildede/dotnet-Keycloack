@@ -9,6 +9,8 @@ namespace eshop_auth.Dal
         Product GetProductById(int id);
         void AddProduct(Product products);
         void UpdateProduct(Product product);
+        
+        Product GetProductByName(string title);
         void DeleteProduct(int id);
     }
 }

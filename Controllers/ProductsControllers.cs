@@ -22,7 +22,7 @@ namespace eshop_auth.Controllers
             return Ok(products);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public IActionResult GetById(int id)
         {
             var product = _productRepository.GetProductById(id);
@@ -33,6 +33,16 @@ namespace eshop_auth.Controllers
             return Ok(product);
         }
 
+        [HttpGet("title/{title}")]
+        public IActionResult GetByName(string title)
+        {
+            var product = _productRepository.GetProductByName(title);
+            if (product == null)
+            {
+                return NotFound(new { Message = $"Product with title '{title}' not found." });
+            }
+            return Ok(product); 
+        }
         [HttpPost]
         public IActionResult Add([FromBody] Product product)
         {

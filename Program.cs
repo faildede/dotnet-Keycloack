@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using eshop_auth.Models;
 using eshop_auth.Dal;
@@ -7,8 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<ApplicationContext>(opt =>
-    opt.UseInMemoryDatabase("eshop_auth"));
+builder.Services.AddDbContext<ApplicationContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
+
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
 
 
@@ -34,5 +36,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
+
 
 app.Run();
