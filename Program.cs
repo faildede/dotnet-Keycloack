@@ -45,10 +45,6 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.MapGet("users/me", (ClaimsPrincipal claimsPrincipal) =>
-{
-    return claimsPrincipal.Claims.ToDictionary(c => c.Type, c => c.Value);
-}).RequireAuthorization();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers().RequireAuthorization();
