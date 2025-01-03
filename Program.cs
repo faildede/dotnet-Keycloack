@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using eshop_auth.Models;
 using eshop_auth.Dal;
 using Microsoft.OpenApi.Models;
+using eshop_auth.Auth.Api.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,15 +15,21 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
 
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
+builder.Services.AddSwaggerGenWithAuth(builder.Configuration);
 
-
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "eshop_auth API", Version = "v1" });
-});
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(o =>
+    {
+        o.RequireHttpsMetadata = false;
+        o.Audience = builder.Configuration["Authentication:Audience"];
+        o.MetadataAddress = builder.Configuration["Authentication:MetadataAddress"]!;
+        o.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidIssuer = builder.Configuration["Authentication:ValidateIssuer"],
+        };
+    });
 
 var app = builder.Build();
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -30,13 +39,20 @@ if (app.Environment.IsDevelopment())
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "eshop_auth API v1");
         c.RoutePrefix = string.Empty; 
+        c.OAuthClientId("public-client"); 
+        c.OAuthAppName("eshop_auth API");
+        c.OAuthUsePkce();
     });
 }
 
+app.MapGet("users/me", (ClaimsPrincipal claimsPrincipal) =>
+{
+    return claimsPrincipal.Claims.ToDictionary(c => c.Type, c => c.Value);
+}).RequireAuthorization();
 app.UseHttpsRedirection();
 app.UseAuthorization();
-app.MapControllers();
-
+app.MapControllers().RequireAuthorization();
+app.UseAuthentication();
 
 
 app.Run();

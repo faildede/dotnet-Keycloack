@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eshop-auth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44ba6810db0f1bf6570c4c45bdc96a23715731f0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68f5a183d6a1f2831b918babe9853de319e94ff8")]
 [assembly: System.Reflection.AssemblyProductAttribute("eshop-auth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eshop-auth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

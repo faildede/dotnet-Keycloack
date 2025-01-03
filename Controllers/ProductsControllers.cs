@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using eshop_auth.Dal;
 using eshop_auth.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eshop_auth.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly IProductsRepository _productRepository;
@@ -16,12 +18,14 @@ namespace eshop_auth.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAll()
         {
             var products = _productRepository.GetProducts();
             return Ok(products);
         }
-
+     
+        [AllowAnonymous]
         [HttpGet("{id:int}")]
         public IActionResult GetById(int id)
         {
@@ -32,7 +36,8 @@ namespace eshop_auth.Controllers
             }
             return Ok(product);
         }
-
+        
+        [AllowAnonymous]
         [HttpGet("title/{title}")]
         public IActionResult GetByName(string title)
         {
@@ -43,6 +48,8 @@ namespace eshop_auth.Controllers
             }
             return Ok(product); 
         }
+        
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Add([FromBody] Product product)
         {

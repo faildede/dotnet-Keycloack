@@ -6,21 +6,32 @@
       POSTGRES_PASSWORD: root
       POSTGRES_DB: db
     ports:
-      - "5432:5432"
+      - "5433:5432"  
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   keycloak:
     image: quay.io/keycloak/keycloak:26.0.7
     container_name: keycloak
+    command: ["start-dev"]
     ports:
-      - "8080:8080"
+      - "18080:8080"
     environment:
-      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
-      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
-    command: start-dev
-    
+      - KC_HEALTH_ENABLED=true
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./.containers/identity:/opt/keycloak/data
+  
+  keycloak.auth.api:
+    image: ${DOCKER_REGISTRY-}keycloakauthapi
+    container_name: Keycloak.Auth.Api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "5000:8080"
+      - "5001:8081"
 
-    
 volumes:
   postgres_data:

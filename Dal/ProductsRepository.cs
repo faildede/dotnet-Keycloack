@@ -21,7 +21,7 @@ namespace eshop_auth.Dal
         {
             var product = _db.Products.Find(id);
             if (product == null){
-             return null;
+             throw new Exception("Product not found");
             }
             return product;
         }
